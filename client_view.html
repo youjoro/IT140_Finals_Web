@@ -10,13 +10,12 @@
 <body style="text-align:center;">
          
     <form method="POST" action="send_user_data.php" >
-        Email:<input type="text" name = "user_email">
+        Email:<input type="text" name = "user_email" required>
         <br>
-        Password:<input type="text" name = "user_password">
+        Password:<input type="text" name = "user_password" required>
         <br><br>
-        <form method="POST" action="check_available_device.php" >
-
-        </form>
+        Device ID:<input type="text" name = "device_id">
+        <br>
         <input type="submit">
     </form>
 
