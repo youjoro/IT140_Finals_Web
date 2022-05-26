@@ -9,7 +9,7 @@
 
 		public function __construct() {
 			$this->host = 'localhost';
-			$this->user = 'pma';
+			$this->user = 'root';
 			$this->pass = '';
 			$this->db = 'fumo_db';
 			$this->mysqli = new mysqli($this->host, $this->user, $this->pass, $this->db) or die($this->mysqli->error);
@@ -17,11 +17,25 @@
 			if($this->mysqli->connect_error){
 				die("Connection failed".$this->mysqli->connect_error);
 			}
-			echo "Connected successfully";
+			
+		}
+
+		public function user_exists($check_email){
+			$sql = "SELECT * FROM `user_info` WHERE `User_email` = '$check_email';";
+			$check=mysqli_query($this->mysqli,$sql);
+
+			if($check->num_rows != 0){
+				echo"<small>User Exists</small>";
+				return TRUE;
+			} else{
+				return FALSE;
+			}
+			
+
 		}
 
 		public function insert_user_data($user_email,$user_pass){
-
+			
 			$sql = "INSERT INTO `user_info` (`User_email`,`User_password`) VALUES ('$user_email','$user_pass')";
 			mysqli_query($this->mysqli, $sql);
 
@@ -41,11 +55,20 @@
 			$find_device = "SELECT * FROM `available_devices` WHERE `device_id` LIKE $id_find;";
 			$sql=mysqli_query($this->mysqli, $find_device);
 
-			if($sql->num_rows == 0){
-				return FALSE;
+			if($sql->num_rows != 0){
+				$check_owner = "SELECT `owner_email` FROM `available_devices` WHERE `device_id` LIKE $id_find;";
+				$sql=mysqli_query($this->mysqli, $check_owner);
+
+				if($sql->num_rows != NULL ){
+					echo "Has user already";
+					return FALSE;
+				}
+
+				return TRUE;
 			}
-			return TRUE;
-		
+			return FALSE;
+
+			
 		}
 
 	}
