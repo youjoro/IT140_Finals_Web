@@ -23,14 +23,13 @@
 		public function user_exists($check_email){
 			$sql = "SELECT * FROM `user_info` WHERE `User_email` = '$check_email';";
 			$check=mysqli_query($this->mysqli,$sql);
-
-			if($check->num_rows != 0){
-				echo"<small>User Exists</small>";
-				return TRUE;
-			} else{
+			
+			if($check->num_rows == 0){
 				return FALSE;
 			}
-			
+
+			echo"<small>User Exists</small>";
+			return TRUE;
 
 		}
 
@@ -51,24 +50,15 @@
 		  }
 	  
 		function device_exists($id_find){
-
-			$find_device = "SELECT * FROM `available_devices` WHERE `device_id` LIKE $id_find;";
-			$sql=mysqli_query($this->mysqli, $find_device);
-
-			if($sql->num_rows != 0){
-				$check_owner = "SELECT `owner_email` FROM `available_devices` WHERE `device_id` LIKE $id_find;";
-				$sql=mysqli_query($this->mysqli, $check_owner);
-
-				if($sql->num_rows != NULL ){
-					echo "Has user already";
-					return FALSE;
-				}
-
-				return TRUE;
-			}
-			return FALSE;
-
 			
+			$query = "SELECT `owner_email` FROM `available_devices` WHERE `device_id` LIKE $id_find;";
+			$sql=mysqli_query($this->mysqli, $query);
+			
+			if ($sql->num_rows == 0){
+				echo "Device not available";
+				return FALSE;
+			}
+			return TRUE;
 		}
 
 	}
