@@ -1,11 +1,7 @@
 <?php
-    include 'db_conn.php';
+    $PATH = '/xampp/htdocs/IT140_Finals_Web/';
+    include $PATH.'static/db_conn.php';
 
-    $db = new DBobject;
-    
-    $result1 = $db->device_exists(1234);
-    $result2 = $db->device_exists(3244);
-    $result3 = $db->device_exists(4444);
-
-
+    $db_conn = new DBobject;
+    $db_conn->change_worker_state(0);
 ?>

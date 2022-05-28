@@ -1,5 +1,5 @@
 <?php
-    include 'db_conn.php';
+    include 'static/db_conn.php';
 
     $user_email=$_POST['user_email'];
     $user_pass=$_POST['user_password'];
