@@ -5,19 +5,26 @@
     $user_pass=$_POST['user_password'];
     $id_find = $_POST['device_id'];
 
-    $db_conn = new DBobject;
+    if ($id_find != null && $id_find != '' ){
+      
+      $db_conn = new DBobject;
 
-    if ($id_find != null && $id_find != ''){
-      if($db_conn->checkDevice($id_find)==TRUE){
+      if($db_conn->user_exists($user_email) == FALSE){
+
         $db_conn->insert_user_data($user_email,$user_pass);
-
-
-        $db_conn->update_device_info($id_find,$user_email);
         
+        if($db_conn->device_exists($id_find)==TRUE){
+          
+          $db_conn->update_device_info($id_find,$user_email);
+        }
+        echo "transaction complete";
       }
-    }
-    else{
-      $db_conn->insert_user_data($user_email,$user_pass);
+      echo "bawal yan pre";
+
+
     }
 
+    header("Location: client_view.html");
+    
+    die();
 ?>
