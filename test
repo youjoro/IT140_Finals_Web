@@ -1,0 +1,33 @@
+float hum = dht.readHumidity(); //Reading the humidity and storing in hum
+    float temp = dht.readTemperature(); //Reading the temperature as Celsius and storing in temp
+    float fah = dht.readTemperature(true); //reading the temperature in Fahrenheit
+    float heat_index = dht.computeHeatIndex(fah, hum); //Reading the heat index in Fahrenheit
+    float heat_indexC = dht.convertFtoC(heat_index); //Converting the heat index in Celsius
+
+    if (cliente.connect(serv, 80)) { //Connecting at the IP address and port we saved before
+
+        Serial.println("connected");
+
+        cliente.print("GET //IT140_Finals_Web/restAPI/log_data.php?"); //Connecting and Sending values to database
+        cliente.print("&temp=");
+        cliente.print(temp);
+        cliente.print("&humidity=");
+        cliente.print(hum);
+        cliente.print("&heat_index=");
+        cliente.println(heat_indexC);
+
+        //Printing the values on the serial monitor
+        Serial.print("Temperature= ");
+        Serial.println(temp);
+        Serial.print("Humidity= ");
+        Serial.println(hum);
+        Serial.print("Heat Index= ");
+        Serial.println(heat_indexC);
+        cliente.stop(); //Closing the connection
+    }
+    else {
+        // if you didn't get a connection to the server:
+        Serial.println("connection failed");
+    }
+
+    delay(5000);
