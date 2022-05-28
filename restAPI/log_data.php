@@ -20,7 +20,7 @@
     $txt = json_encode($data);
     $myfile = file_put_contents($PATH."arduino_logs/arduino_".$date.".log", $txt.PHP_EOL , FILE_APPEND | LOCK_EX);
 
-    #pclose(popen("start /b php ".$PATH."static/log_to_db.php", "w"));
+    #pclose(popen("start /b php ".$PATH."static/log_to_db.php", "w")); //This line will run the php script on the background
 
     die();
 ?>
