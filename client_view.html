@@ -13,7 +13,7 @@
                 document.getElementById("txtHint").innerHTML = this.responseText;
               }
             };
-            xmlhttp.open("GET","check_user.php?q="+str,true);
+            xmlhttp.open("GET","restAPI/check_user.php?q="+str,true);
             xmlhttp.send();
           }
         }
