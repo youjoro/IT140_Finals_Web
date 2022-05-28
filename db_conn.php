@@ -1,4 +1,5 @@
 <?php
+error_reporting(E_ALL ^ E_WARNING); 
 //adjust names
 	class DBobject {
 		private $host;
@@ -9,7 +10,7 @@
 
 		public function __construct() {
 			$this->host = 'localhost';
-			$this->user = 'pma';
+			$this->user = 'root';
 			$this->pass = '';
 			$this->db = 'fumo_db';
 			$this->mysqli = new mysqli($this->host, $this->user, $this->pass, $this->db) or die($this->mysqli->error);
@@ -50,15 +51,16 @@
 		  }
 	  
 		function device_exists($id_find){
-			
 			$query = "SELECT `owner_email` FROM `available_devices` WHERE `device_id` LIKE $id_find;";
 			$sql=mysqli_query($this->mysqli, $query);
-			
-			if ($sql->num_rows == 0){
-				echo "Device not available";
+
+			$result = mysqli_fetch_assoc($sql);
+
+			if ($sql->num_rows == 0 || $result['owner_email'] != 0){
+				echo $id_find." is Not Available";
 				return FALSE;
 			}
-			return TRUE;
+
 		}
 
 	}
