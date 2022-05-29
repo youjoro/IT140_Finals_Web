@@ -1,4 +1,4 @@
 Android app for plant monitoring system. No functions yet, only UI. Feedback for UI is appreciated. 
-Waifus are necessary for plus points idk.
+Waifus in drawable folder are necessary for plus points idk.
 Maybe create a blank project and insert the things I've uploaded.
 Rest functions will be added within the week dun worri ;)
