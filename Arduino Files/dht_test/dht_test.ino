@@ -1,3 +1,4 @@
+//This uses a Arduino with an Ethernet Shield
 #include <SPI.h>
 #include <Ethernet.h>
 #include "DHT.h"
