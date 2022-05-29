@@ -1,19 +1,21 @@
+//needed libraries 
 #include <ESP8266WiFi.h>
 #include<ESP8266HTTPClient.h>
 #include "DHT.h"
+
+//Setting up digital pins for the wemos
 #define DHTPIN D9
 #define DHTTYPE DHT11
 
+//Variables to start the wemos connection
 DHT dht(DHTPIN, DHTTYPE);
-const char* ssid = "HUAWEI-2abb";
-const char* password = "39ec4bba";
-const char* host = "192.168.1.55";
+const char* ssid = "HUAWEI-2abb";//enter SSID of your network
+const char* password = "39ec4bba";//enter the password of your network
+const char* host = "192.168.100.18";//enter ip address of your pc
 String temp="",hum="";
 
 
 void setup() {
-//for DHT
-
 Serial.begin(9600);
 Serial.print("Connecting to ");
 Serial.println(ssid);
@@ -48,7 +50,7 @@ void loop() {
     
       if(WiFi.status()== WL_CONNECTED){
          HTTPClient http;
-         http.begin("http://192.168.1.10/IT155P/wemos/collectDHT.php?ipsrc=1&temp="+ temp + "&humidity=" + hum); //add here the sensors
+         http.begin("http://192.168.100.18//IT140_Finals_Web/restAPI/log_data.php?ipsrc=1&temp="+ temp + "&humidity=" + hum); //add here the sensors
          http.addHeader("Content-Type", "text/plain");
          http.GET();
          String res = http.getString();
