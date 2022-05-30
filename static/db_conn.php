@@ -10,7 +10,7 @@ error_reporting(E_ALL ^ E_WARNING);
 
 		public function __construct() {
 			$this->host = 'localhost';
-			$this->user = 'pma';
+			$this->user = 'root';
 			$this->pass = '';
 			$this->db = 'fumo_db';
 			$this->mysqli = new mysqli($this->host, $this->user, $this->pass, $this->db) or die($this->mysqli->error);
@@ -40,6 +40,20 @@ error_reporting(E_ALL ^ E_WARNING);
 			mysqli_query($this->mysqli, $sql);
 
 			echo "User Data Inserted";
+		}
+
+		public function verify_user($user_email,$user_pass){
+			
+			$sql ="SELECT `User_email`,`User_password` FROM `user_info` WHERE `User_email` LIKE '$user_email' and `User_password` LIKE '$user_pass';";
+			$check=mysqli_query($this->mysqli,$sql);
+			
+			if($check->num_rows == 0){
+				return FALSE;
+			}
+
+			echo"<small>Logged in Welcome whoever tf u are</small>";
+			return TRUE;
+
 		}
 
 		function update_device_info($id_find,$user_email){
