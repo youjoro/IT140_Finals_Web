@@ -9,7 +9,7 @@ error_reporting(E_ALL ^ E_WARNING);
 		private $mysqli;
 
 		public function __construct() {
-			$this->host = 'localhost';
+			$this->host = 'localhost:3307';
 			$this->user = 'root';
 			$this->pass = '';
 			$this->db = 'fumo_db';
