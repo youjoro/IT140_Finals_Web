@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 24, 2022 at 01:36 PM
+-- Generation Time: May 31, 2022 at 09:56 AM
 -- Server version: 10.4.22-MariaDB
 -- PHP Version: 8.1.2
 
@@ -37,8 +37,21 @@ CREATE TABLE `available_devices` (
 --
 
 INSERT INTO `available_devices` (`device_id`, `owner_email`) VALUES
-('1234', NULL),
-('3244', NULL);
+('3244', NULL),
+('1234', 'nigaman');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `device_data`
+--
+
+CREATE TABLE `device_data` (
+  `id` varchar(30) DEFAULT NULL,
+  `Temperature` varchar(50) DEFAULT NULL,
+  `Humidity` varchar(50) DEFAULT NULL,
+  `reading_time` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -48,8 +61,29 @@ INSERT INTO `available_devices` (`device_id`, `owner_email`) VALUES
 
 CREATE TABLE `user_info` (
   `User_email` varchar(255) NOT NULL,
-  `User_password` varchar(100) NOT NULL
+  `User_password` varchar(100) NOT NULL,
+  `First_Name` varchar(255) NOT NULL,
+  `Last_Name` varchar(255) NOT NULL,
+  `Birth_date` date DEFAULT NULL,
+  `User_type` varchar(30) NOT NULL DEFAULT 'User'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `user_info`
+--
+
+INSERT INTO `user_info` (`User_email`, `User_password`, `First_Name`, `Last_Name`, `Birth_date`, `User_type`) VALUES
+('123124', 'saddaw', '', '', NULL, 'User'),
+('12weqwe', 'qweqe213', '', '', NULL, 'User'),
+('2311ads', 'sdadad', '', '', NULL, 'User'),
+('adawd', 'dawdawddad', '', '', NULL, 'User'),
+('dasdasda', '1321313', '', '', NULL, 'User'),
+('nigaman', '1234', '', '', NULL, 'User'),
+('putainga 12312', 'weqweq', '', '', NULL, 'User'),
+('qweqwe', 'qweqwe', '', '', NULL, 'User'),
+('sdszgzersga', 'rwzdcvbzd', '', '', NULL, 'User'),
+('svxcvxbxcbv', 'bzxvzxcvzb', '', '', NULL, 'User'),
+('test', 'zxczxcvzv', '', '', NULL, 'User');
 
 --
 -- Indexes for dumped tables
