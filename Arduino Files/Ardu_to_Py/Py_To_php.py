@@ -27,7 +27,7 @@ def send_data(data_get):
     data["temp"] = data_received[0]
     data["moisture"] = data_received[1]
     data["humidity"] = data_received[2]
-    data["date"] = str(datetime.datetime.today()).split()[0]
+    data["date"] = datetime.datetime.now()
 
     r = requests.get('http://localhost/IT140_Finals_Web/restAPI/log_data.php?', params=data)
     print(r.url)
