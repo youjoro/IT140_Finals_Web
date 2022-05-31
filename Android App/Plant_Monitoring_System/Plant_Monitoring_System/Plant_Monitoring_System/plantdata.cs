@@ -22,15 +22,15 @@ namespace Plant_Monitoring_System
             SetContentView(Resource.Layout.plantdata);
             temp = FindViewById<TextView>(Resource.Id.temp);
             hum = FindViewById<TextView>(Resource.Id.humidity);
-            moist = FindViewById<TextView>(Resource.Id.moist);  
-            datetime = FindViewById<TextView>(Resource.Id.datetime);    
+            moist = FindViewById<TextView>(Resource.Id.moist);
+            datetime = FindViewById<TextView>(Resource.Id.datetime);
             refresh = FindViewById<Button>(Resource.Id.refresh);
             logout = FindViewById<Button>(Resource.Id.logout);
 
             logout.Click += this.logoutUser;
         }
 
-        public void logoutUser (object sender, EventArgs e)
+        public void logoutUser(object sender, EventArgs e)
         {
             Intent intent = new Intent(this, typeof(MainActivity));
             StartActivity(intent);
