@@ -95,6 +95,11 @@ error_reporting(E_ALL ^ E_WARNING);
 			 
 		}
 
+		function insert_device_data($device_id, $temp, $humidity, $moisture, $date) {
+			$query = "INSERT INTO `device_data` VALUES ('$device_id', '$temp', '$humidity', '$moisture', '$date')";
+			mysqli_query($this->mysqli, $query);
+		}
+
 	}
 	
 ?>
