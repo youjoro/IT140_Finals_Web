@@ -8,39 +8,26 @@ using System;
 
 namespace Plant_Monitoring_System
 {
-    [Activity(Label = "Log in to Plant Monitoring System", Theme = "@style/AppTheme", MainLauncher = true)]
+    [Activity(Label = "Plant Monitoring System", Theme = "@style/AppTheme")]
     public class MainActivity : AppCompatActivity
     {
-        EditText email, pass;
-        Button login, reg;
+        TextView temp, hum, moist, datetime;
+        Button refresh, logout;
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
             Xamarin.Essentials.Platform.Init(this, savedInstanceState);
-            SetContentView(Resource.Layout.activity_main);
+            SetContentView(Resource.Layout.plantdata);
 
-            email = FindViewById<EditText>(Resource.Id.email);
-            pass = FindViewById<EditText>(Resource.Id.pass);
-            login = FindViewById<Button>(Resource.Id.login);
-            reg = FindViewById<Button>(Resource.Id.register);
+            temp = FindViewById<TextView>(Resource.Id.temp);
+            hum = FindViewById<TextView>(Resource.Id.humidity);
+            moist = FindViewById<TextView>(Resource.Id.moist);
+            datetime = FindViewById<TextView>(Resource.Id.datetime);
+            refresh = FindViewById<Button>(Resource.Id.refresh);
+            logout = FindViewById<Button>(Resource.Id.logout);
 
-            login.Click += this.loginUser;
-            reg.Click += this.registerUser;
+            logout.Click += this.logoutUser;
 
-        }
-        public void loginUser(object sender, EventArgs e)
-        {
-            if  (email.Text == "wouh" && pass.Text == "69")
-            {
-                Intent intent = new Intent(this, typeof(plantdata));
-                StartActivity(intent);
-            }
-
-        }
-        public void registerUser(object sender, EventArgs e)
-        {
-            Intent intent = new Intent(this, typeof(register));
-            StartActivity(intent);
         }
 
         public override void OnRequestPermissionsResult(int requestCode, string[] permissions, [GeneratedEnum] Android.Content.PM.Permission[] grantResults)
@@ -48,6 +35,13 @@ namespace Plant_Monitoring_System
             Xamarin.Essentials.Platform.OnRequestPermissionsResult(requestCode, permissions, grantResults);
 
             base.OnRequestPermissionsResult(requestCode, permissions, grantResults);
+        }
+
+        public void logoutUser(object sender, EventArgs e)
+        {
+            Intent intent = new Intent(this, typeof(Login));
+            StartActivity(intent);
+            Finish();
         }
     }
 }

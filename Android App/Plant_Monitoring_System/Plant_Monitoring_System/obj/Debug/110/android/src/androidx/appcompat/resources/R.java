@@ -139,7 +139,7 @@ public final class R {
 		public static final int status_bar_notification_info_maxnum = 0x7f09000e;
 	}
 	public static final class layout {
-		public static final int custom_dialog = 0x7f0b001f;
+		public static final int custom_dialog = 0x7f0b001e;
 		public static final int notification_action = 0x7f0b0030;
 		public static final int notification_action_tombstone = 0x7f0b0031;
 		public static final int notification_template_custom_big = 0x7f0b0032;
