@@ -4,7 +4,7 @@ import serial
 import time
 import datetime
 import requests
-from datetime import date
+from datetime import datetime
 
 #starts connection to the serialport
 serial_send = serial.Serial('COM3', 9600, timeout=1)
@@ -22,13 +22,14 @@ def read_userOUTPUT():
 
 #retrieving data from the serial port and reformats to be able to be sent to the php
 def send_data(data_get):
+
     data_received = data_get.split()
+    dt = datetime.now()
     print(data_get)
     data["temp"] = data_received[0]
     data["moisture"] = data_received[1]
     data["humidity"] = data_received[2]
-    data["date"] = datetime.datetime.now()
-
+    data["date"] = datetime.timestamp(dt)
     r = requests.get('http://localhost/IT140_Finals_Web/restAPI/log_data.php?', params=data)
     print(r.url)
     return
