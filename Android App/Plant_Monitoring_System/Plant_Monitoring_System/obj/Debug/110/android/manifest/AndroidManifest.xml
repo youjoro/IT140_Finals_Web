@@ -9,16 +9,15 @@
   <uses-sdk android:minSdkVersion="21" android:targetSdkVersion="30" />
   <uses-permission android:name="android.permission.INTERNET" />
   <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-  <application android:name="android.app.Application" android:allowBackup="true" android:appComponentFactory="androidx.core.app.CoreComponentFactory" android:debuggable="true" android:extractNativeLibs="true" android:icon="@mipmap/ic_launcher" android:label="@string/app_name" android:roundIcon="@mipmap/ic_launcher_round" android:supportsRtl="true" android:theme="@style/AppTheme">
-    <activity android:name="crc64664bbffb6947eedf.MainActivity" android:exported="true" android:label="Log in to Plant Monitoring System" android:theme="@style/AppTheme">
+  <application android:name="android.app.Application" android:allowBackup="true" android:appComponentFactory="androidx.core.app.CoreComponentFactory" android:debuggable="true" android:extractNativeLibs="true" android:icon="@mipmap/ic_launcher" android:label="@string/app_name" android:roundIcon="@mipmap/ic_launcher_round" android:supportsRtl="true" android:theme="@style/AppTheme" android:usesCleartextTraffic="true">
+    <activity android:name="crc64664bbffb6947eedf.Login" android:exported="true" android:label="Plant Monitoring System">
       <intent-filter>
         <action android:name="android.intent.action.MAIN" />
         <category android:name="android.intent.category.LAUNCHER" />
       </intent-filter>
     </activity>
-    <activity android:name="crc64664bbffb6947eedf.plantdata" android:label="plantdata" />
-    <activity android:name="crc64664bbffb6947eedf.register" android:label="Register to Plant Monitoring System" android:theme="@style/AppTheme" />
-    <activity android:name="crc64aa48e9858b87ae06.register" android:label="register" />
+    <activity android:name="crc64664bbffb6947eedf.MainActivity" android:label="Plant Monitoring System" android:theme="@style/AppTheme" />
+    <activity android:name="crc64664bbffb6947eedf.Register" android:label="Register to Plant Monitoring System" android:theme="@style/AppTheme" />
     <service android:name="crc64396a3fe5f8138e3f.KeepAliveService" />
     <receiver android:name="crc64a0e0a82d0db9a07d.BatteryBroadcastReceiver" android:enabled="true" android:exported="false" android:label="Essentials Battery Broadcast Receiver" />
     <receiver android:name="crc64a0e0a82d0db9a07d.EnergySaverBroadcastReceiver" android:enabled="true" android:exported="false" android:label="Essentials Energy Saver Broadcast Receiver" />

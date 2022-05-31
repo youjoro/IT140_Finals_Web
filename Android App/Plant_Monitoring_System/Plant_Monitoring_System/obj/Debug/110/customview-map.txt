@@ -3,6 +3,7 @@ adaptive-icon;obj\Debug\110\res\mipmap-anydpi-v26\ic_launcher_round.xml
 background;obj\Debug\110\res\mipmap-anydpi-v26\ic_launcher.xml
 background;obj\Debug\110\res\mipmap-anydpi-v26\ic_launcher_round.xml
 Button;obj\Debug\110\res\layout\activity_main.xml
+Button;obj\Debug\110\res\layout\login.xml
 Button;obj\Debug\110\res\layout\plantdata.xml
 Button;obj\Debug\110\res\layout\register.xml
 cache-path;E:\oogabooga\AndroidDev\IT140P\Plant_Monitoring_System\Plant_Monitoring_System\obj\Debug\110\lp\38\jl\res\xml\xamarin_essentials_fileprovider_file_paths.xml
@@ -10,6 +11,7 @@ color;obj\Debug\110\res\values\colors.xml
 color;obj\Debug\110\res\values\ic_launcher_background.xml
 corners;obj\Debug\110\res\drawable\rounded_rect.xml
 EditText;obj\Debug\110\res\layout\activity_main.xml
+EditText;obj\Debug\110\res\layout\login.xml
 EditText;obj\Debug\110\res\layout\register.xml
 external-cache-path;E:\oogabooga\AndroidDev\IT140P\Plant_Monitoring_System\Plant_Monitoring_System\obj\Debug\110\lp\38\jl\res\xml\xamarin_essentials_fileprovider_file_paths.xml
 external-path;E:\oogabooga\AndroidDev\IT140P\Plant_Monitoring_System\Plant_Monitoring_System\obj\Debug\110\lp\38\jl\res\xml\xamarin_essentials_fileprovider_file_paths.xml
@@ -17,6 +19,7 @@ foreground;obj\Debug\110\res\mipmap-anydpi-v26\ic_launcher.xml
 foreground;obj\Debug\110\res\mipmap-anydpi-v26\ic_launcher_round.xml
 item;obj\Debug\110\res\values\styles.xml
 LinearLayout;obj\Debug\110\res\layout\activity_main.xml
+LinearLayout;obj\Debug\110\res\layout\login.xml
 LinearLayout;obj\Debug\110\res\layout\plantdata.xml
 LinearLayout;obj\Debug\110\res\layout\register.xml
 paths;E:\oogabooga\AndroidDev\IT140P\Plant_Monitoring_System\Plant_Monitoring_System\obj\Debug\110\lp\38\jl\res\xml\xamarin_essentials_fileprovider_file_paths.xml

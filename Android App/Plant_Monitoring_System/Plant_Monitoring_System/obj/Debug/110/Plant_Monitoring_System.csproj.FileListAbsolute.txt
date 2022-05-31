@@ -33,7 +33,6 @@ E:\oogabooga\AndroidDev\IT140P\Plant_Monitoring_System\Plant_Monitoring_System\o
 E:\oogabooga\AndroidDev\IT140P\Plant_Monitoring_System\Plant_Monitoring_System\obj\Debug\110\android\bin\base.zip
 E:\oogabooga\AndroidDev\IT140P\Plant_Monitoring_System\Plant_Monitoring_System\obj\Debug\110\android\bin\com.companyname.plant_monitoring_system.aab
 E:\oogabooga\AndroidDev\IT140P\Plant_Monitoring_System\Plant_Monitoring_System\obj\Debug\110\android\bin\com.companyname.plant_monitoring_system.apks
-E:\oogabooga\AndroidDev\IT140P\Plant_Monitoring_System\Plant_Monitoring_System\obj\Debug\110\res\layout\activity_main.xml
 E:\oogabooga\AndroidDev\IT140P\Plant_Monitoring_System\Plant_Monitoring_System\obj\Debug\110\res\values\colors.xml
 E:\oogabooga\AndroidDev\IT140P\Plant_Monitoring_System\Plant_Monitoring_System\obj\Debug\110\res\values\ic_launcher_background.xml
 E:\oogabooga\AndroidDev\IT140P\Plant_Monitoring_System\Plant_Monitoring_System\obj\Debug\110\res\values\strings.xml
@@ -313,3 +312,5 @@ E:\oogabooga\AndroidDev\IT140P\Plant_Monitoring_System\Plant_Monitoring_System\o
 E:\oogabooga\AndroidDev\IT140P\Plant_Monitoring_System\Plant_Monitoring_System\obj\Debug\110\stamp\_GenerateJavaStubs.stamp
 E:\oogabooga\AndroidDev\IT140P\Plant_Monitoring_System\Plant_Monitoring_System\obj\Debug\110\stamp\_GeneratePackageManagerJava.stamp
 E:\oogabooga\AndroidDev\IT140P\Plant_Monitoring_System\Plant_Monitoring_System\obj\Debug\110\stamp\_ResolveLibraryProjectImports.stamp
+E:\oogabooga\AndroidDev\IT140P\Plant_Monitoring_System\Plant_Monitoring_System\obj\Debug\110\res\layout\login.xml
+E:\oogabooga\AndroidDev\IT140P\Plant_Monitoring_System\Plant_Monitoring_System\obj\Debug\110\android\src\crc64664bbffb6947eedf\Login.java

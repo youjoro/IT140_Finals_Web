@@ -35,7 +35,7 @@
         android:gravity="center">
 
         <Button
-            android:text="Log in"
+            android:text="Register"
             android:layout_width="110dp"
             android:layout_height="wrap_content"
             android:layout_margin="10dp"

@@ -1,7 +1,7 @@
 package crc64664bbffb6947eedf;
 
 
-public class register
+public class Register
 	extends android.app.Activity
 	implements
 		mono.android.IGCUserPeer
@@ -12,15 +12,15 @@ public class register
 		__md_methods = 
 			"n_onCreate:(Landroid/os/Bundle;)V:GetOnCreate_Landroid_os_Bundle_Handler\n" +
 			"";
-		mono.android.Runtime.register ("Plant_Monitoring_System.register, Plant_Monitoring_System", register.class, __md_methods);
+		mono.android.Runtime.register ("Plant_Monitoring_System.Register, Plant_Monitoring_System", Register.class, __md_methods);
 	}
 
 
-	public register ()
+	public Register ()
 	{
 		super ();
-		if (getClass () == register.class)
-			mono.android.TypeManager.Activate ("Plant_Monitoring_System.register, Plant_Monitoring_System", "", this, new java.lang.Object[] {  });
+		if (getClass () == Register.class)
+			mono.android.TypeManager.Activate ("Plant_Monitoring_System.Register, Plant_Monitoring_System", "", this, new java.lang.Object[] {  });
 	}
 
 
