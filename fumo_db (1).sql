@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 31, 2022 at 11:05 AM
+-- Generation Time: May 31, 2022 at 06:39 PM
 -- Server version: 10.4.22-MariaDB
 -- PHP Version: 8.1.2
 
@@ -48,10 +48,17 @@ INSERT INTO `available_devices` (`device_id`, `owner_email`) VALUES
 
 CREATE TABLE `device_data` (
   `device_id` varchar(30) DEFAULT NULL,
-  `Temperature` varchar(50) DEFAULT NULL,
-  `Humidity` varchar(50) DEFAULT NULL,
+  `Temperature` float DEFAULT NULL,
+  `Humidity` float DEFAULT NULL,
   `reading_time` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `device_data`
+--
+
+INSERT INTO `device_data` (`device_id`, `Temperature`, `Humidity`, `reading_time`) VALUES
+('1234', 50.23, 50.4, '2022-05-31 16:39:24');
 
 -- --------------------------------------------------------
 
