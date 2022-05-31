@@ -1,9 +1,10 @@
 from asyncio.windows_events import NULL
+
 import serial
 import time
 import datetime
 import requests
-
+from datetime import date
 
 #starts connection to the serialport
 serial_send = serial.Serial('COM3', 9600, timeout=1)
@@ -25,10 +26,11 @@ def send_data(data_get):
     print(data_get)
     data["temp"] = data_received[0]
     data["moisture"] = data_received[1]
-    data["Humidity"] = data_received[2]
-    data["date"] = datetime.datetime.now()
+    data["humidity"] = data_received[2]
+    data["date"] = str(datetime.datetime.today()).split()[0]
 
-    r = requests.get('http://localhost//IT140_Finals_Web/restAPI/log_data.php', params=data)
+    r = requests.get('http://localhost/IT140_Finals_Web/restAPI/log_data.php?', params=data)
+    print(r.url)
     return
 
 #loops the python scrips so that unless the read output from the serial port is empty
