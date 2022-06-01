@@ -4,10 +4,14 @@
 
     $device_id = $_GET['id'];
     
-
     $db_conn = new DBobject;
     
-    echo $db_conn -> device_exists($device_id);
+    if ($db_conn -> device_exists($device_id)==FALSE){
+        echo shell_exec("python $PATH/Arduino Files/Ardu_to_Py/Py_To_php.py 'NO' 'nigga'");
+        
+    }
+
+    
 
     die();
 ?>

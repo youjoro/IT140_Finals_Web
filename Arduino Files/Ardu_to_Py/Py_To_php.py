@@ -1,6 +1,7 @@
 from asyncio.windows_events import NULL
 from posixpath import split
 
+import sys
 import serial.tools.list_ports
 import serial
 import time
@@ -27,6 +28,18 @@ def find_ardu():
     return commPort
 
 
+#retrieving of data from php
+def php_retrieve():
+    id = {'id':1234}
+    r = requests.get('http://localhost/IT140_Finals_Web/restAPI/verify_user.php?',params=id)
+    print(sys.argv[0])
+
+
+#send message to arduino for M2M purposes
+def send_userINPUT(send_input):
+    serial_send.write(send_input)
+    time.sleep(0.1)
+    
 
 #receives data from serial comm
 def read_userOUTPUT():
@@ -62,19 +75,26 @@ if get_port!='none':
     print(get_port)
     # starts connection to the serialport
     serial_send = serial.Serial(get_port, 9600, timeout=1)
-    #loops the python scrips so that unless the read output from the serial port is empty
-    #the program will not send the data to the php file
-    data_received = read_userOUTPUT()
+    
     while True:
+        send_userINPUT(1)
         data_received = read_userOUTPUT()
-
-        if (data_received != ''):
-            send_data(data_received)
+        
 else:
     print("no ardu")
 data = {}
 
 
+
+
+#loops the python scrips so that unless the read output from the serial port is empty
+#the program will not send the data to the php file
+#data_received = read_userOUTPUT()
+#while True:
+    #data_received = read_userOUTPUT()
+
+    #if (data_received != ''):
+        #send_data(data_received)
 
     
     

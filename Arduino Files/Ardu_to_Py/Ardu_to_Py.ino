@@ -19,13 +19,22 @@ float hum_values[5]={40.10, 43.51, 54.12, 61.20, 45.19};
 float soil_values[5]={57.10, 45.51, 75.12, 41.20, 53.19};
 String temp_send,hum_send,soil_send,device_id="1234";
 
+//for RTOS
+TaskHandle_t handler_dht;
+TaskHandle_t handler_soil;
+//TaskHandle_t handler_check;
+
+
+//for checking status
+int verified_device=0;
+byte incoming_data;
 
 void setup(){
  Serial.begin(9600);
  dht.begin();
- xTaskCreate(MyThread1, "Task1", 100, NULL, 1, NULL);
- xTaskCreate(get_soil, "Soil_task", 100, NULL, 2, NULL);
- xTaskCreate(get_dht, "DHT_Task", 100, NULL, 3, NULL);
+ xTaskCreate(check_status, "Task1", 100, (void*)&verified_device, 3, NULL);
+ xTaskCreate(get_soil, "Soil_task", 100, NULL, 1, &handler_soil);
+ xTaskCreate(get_dht, "DHT_Task", 100, NULL, 2, &handler_dht);
  
 }
 
@@ -35,12 +44,27 @@ void loop()
 }
 
 
-static void MyThread1(void* pvParameters)
+static void check_status(void* pvParameters)
 {
   while(1){
+    incoming_data = Serial.read();
+    delay(1000);
+    if (incoming_data =='H'){
+      verified_device=1;
+    }
+    
+    if(verified_device==1){
+      vTaskResume(handler_dht);
+      vTaskResume(handler_soil);
+      vTaskDelay(4000/portTICK_PERIOD_MS); 
+      
+    }
+    vTaskSuspend(handler_dht);
+    vTaskSuspend(handler_soil);
     
 
   }
+  vTaskDelay(1000/portTICK_PERIOD_MS); 
 }
 
 static void get_soil(void* pvParameters)
