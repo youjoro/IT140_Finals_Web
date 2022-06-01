@@ -38,12 +38,12 @@ def php_retrieve():
 #send message to arduino for M2M purposes
 def send_userINPUT(send_input):
     serial_send.write(send_input)
+    serial_send.flushInput()
     time.sleep(0.1)
     
 
 #receives data from serial comm
 def read_userOUTPUT():
-    serial_send.flushInput()
     msg = serial_send.readline()
     mensahe = msg.decode('utf-8')
     
@@ -77,8 +77,10 @@ if get_port!='none':
     serial_send = serial.Serial(get_port, 9600, timeout=1)
     
     while True:
-        send_userINPUT(1)
+        send_userINPUT(b'H')
         data_received = read_userOUTPUT()
+        if (data_received != ''):
+            send_data(data_received)
         
 else:
     print("no ardu")
@@ -87,14 +89,7 @@ else:
 
 
 
-#loops the python scrips so that unless the read output from the serial port is empty
-#the program will not send the data to the php file
-#data_received = read_userOUTPUT()
-#while True:
-    #data_received = read_userOUTPUT()
-
-    #if (data_received != ''):
-        #send_data(data_received)
+    
 
     
     
