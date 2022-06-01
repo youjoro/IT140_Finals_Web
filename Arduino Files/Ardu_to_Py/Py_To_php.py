@@ -82,7 +82,7 @@ if get_port!='none':
         
 else:
     print("no ardu")
-data = {}
+
 
 
 
