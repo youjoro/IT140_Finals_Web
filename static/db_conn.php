@@ -9,7 +9,7 @@ error_reporting(E_ALL ^ E_WARNING);
 		private $mysqli;
 
 		public function __construct() {
-			$this->host = 'localhost:3307';
+			$this->host = 'localhost';
 			$this->user = 'root';
 			$this->pass = '';
 			$this->db = 'fumo_db';
@@ -100,6 +100,19 @@ error_reporting(E_ALL ^ E_WARNING);
 			mysqli_query($this->mysqli, $query);
 		}
 
+		function show_user_table(){
+			$query = "SELECT `User_email`,`User_password`,`First_Name`,`Last_Name`,`Birth_date` FROM `user_info`;";
+			$sql = mysqli_query($this->mysqli, $query);
+
+			if ($sql->num_rows > 0) {
+				// output data of each row
+				while($row = $sql->fetch_assoc()) {
+				echo "<tr><td>" . $row["User_email"]. "</td><td>" . $row["User_password"] . "</td><td>"
+				. $row["First_Name"]. "</td><td>" . $row["Last_Name"] . "</td><td>" . $row["Birth_date"] . "</td></tr>";
+				}
+				echo "</table>";
+				} else { echo "0 results"; }
+		}
 	}
 	
 ?>
