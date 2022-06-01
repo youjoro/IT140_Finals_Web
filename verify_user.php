@@ -6,7 +6,7 @@
 
     $db_conn = new DBobject;
     if ($db_conn->verify_user($user_email,$user_pass)==TRUE){
-        header("Location: user_view.html");
+        header("Location: admin_view.php");
     }
 
     
