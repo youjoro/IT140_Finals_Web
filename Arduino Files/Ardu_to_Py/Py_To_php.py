@@ -72,7 +72,7 @@ if get_port!='none':
             send_data(data_received)
 else:
     print("no ardu")
-data = {}
+
 
 
 
