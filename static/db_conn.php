@@ -100,6 +100,37 @@ error_reporting(E_ALL ^ E_WARNING);
 			mysqli_query($this->mysqli, $query);
 		}
 
+		function get_device_data($email, $id=NULL){
+			$query = "SELECT `device_data`.`device_id`, `Temperature`, `Humidity`, `Moisture`, `reading_time`
+					FROM `device_data`
+					JOIN `available_devices` on `device_data`.`device_id` = `available_devices`.`device_id`
+					JOIN `user_info` on `user_info`.`User_email` = `available_devices`.`owner_email`
+					WHERE `user_info`.`User_email` = '$email'";
+			
+			if ($id) {
+				$query .= " AND `device_data`.`device_id`='$id'";
+			}
+			
+			$result = mysqli_query($this->mysqli, $query);
+
+			$json = array();
+			while($row = mysqli_fetch_assoc($result)) {
+				$json[] = $row;
+			}
+			echo json_encode($json);
+		}
+
+		function get_all_devices($email) {
+			$query = "SELECT `device_id` FROM `available_devices` WHERE `owner_email` = '$email';";
+			$result = mysqli_query($this->mysqli, $query);
+
+			$json = array();
+			while($row = mysqli_fetch_assoc($result)) {
+				$json[] = $row;
+			}
+			echo json_encode($json);
+		}
+
 	}
 	
 ?>
