@@ -32,6 +32,13 @@ byte incoming_data;
 void setup(){
  Serial.begin(9600);
  dht.begin();
+
+ //PINS FOR LEDS
+ //3-RED 4-GREEN
+ pinMode(3,OUTPUT);
+ pinMode(4,OUTPUT);
+
+ //TASKS FOR RTOS
  xTaskCreate(check_status, "Task1", 100, (void*)&verified_device, 3, NULL);
  xTaskCreate(get_soil, "Soil_task", 100, NULL, 1, &handler_soil);
  xTaskCreate(get_dht, "DHT_Task", 100, NULL, 2, &handler_dht);
@@ -57,11 +64,16 @@ static void check_status(void* pvParameters)
       vTaskResume(handler_dht);
       vTaskResume(handler_soil);
       vTaskDelay(4000/portTICK_PERIOD_MS); 
-      
+      digitalWrite(3,LOW);
+      digitalWrite(4,HIGH);
+    }else{
+      vTaskSuspend(handler_dht);
+      vTaskSuspend(handler_soil);
+      digitalWrite(3,HIGH);
+      digitalWrite(4,LOW);
     }
-    vTaskSuspend(handler_dht);
-    vTaskSuspend(handler_soil);
     
+
 
   }
   vTaskDelay(1000/portTICK_PERIOD_MS); 

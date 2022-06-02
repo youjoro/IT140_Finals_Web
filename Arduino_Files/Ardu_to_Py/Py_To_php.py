@@ -2,6 +2,7 @@ from asyncio.windows_events import NULL
 from posixpath import split
 
 import sys
+from turtle import st
 import serial.tools.list_ports
 import serial
 import time
@@ -30,9 +31,11 @@ def find_ardu():
 
 #retrieving of data from php
 def php_retrieve():
-    id = {'id':1234}
-    r = requests.get('http://localhost/IT140_Finals_Web/restAPI/verify_user.php?',params=id)
-    print(sys.argv[0])
+    id = {'id':1512}
+    r = requests.get('http://localhost//IT140_Finals_Web/Arduino_Files/verify_device.php?',params=id)
+    status = r.text.split('=')
+    x=status[1]
+    return (x)
 
 
 #send message to arduino for M2M purposes
@@ -64,22 +67,27 @@ def send_data(data_get):
     data["date"] = datetime.timestamp(dt)
     data["id"] = data_received[3]
     r = requests.get('http://localhost/IT140_Finals_Web/restAPI/log_data.php?', params=data)
-    print(r.url)
-    return
+
+
+
+#retrieve verification from php to database
+verify = php_retrieve()
+
 
 #starts to find available com ports and
 #tries to find the arduino one
 get_port = find_ardu()
 
-if get_port!='none':
-    print(get_port)
+if get_port!='none' and verify == '1':
+    #print(get_port)
     # starts connection to the serialport
     serial_send = serial.Serial(get_port, 9600, timeout=1)
     
+    #start reading the data from arduino
     while True:
         send_userINPUT(b'H')
         data_received = read_userOUTPUT()
-        if (data_received != ''):
+        if (data_received != '' and data_received != b'H'):
             send_data(data_received)
         
 else:

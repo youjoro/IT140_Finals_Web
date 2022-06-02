@@ -9,23 +9,46 @@
 </head>
   
 <body style="text-align:center;">
-         
+<br>
     <div class="container-fluid">
-        <img src="sexsex.png" style="width:128px;height:128px;">
-        <table class="table table-striped table-dark">
-            <thead>
-                <tr>
-                    <th>User Email</th>
-                    <th>User Password</th>
-                    <th>First Name</th>
-                    <th>Last Name</th>
-                    <th>Birth Date</th>
-                </tr>
-            </thead>
-            <?php
-                include 'retrieve_all_info.php';
-            ?>
-        </table>
+        <div class="row">
+            <div class="col-md-5">
+                <div class="table-responsive">
+                    <table class="table table-striped table-dark">
+                        <thead>
+                            <tr>
+                                <th>User Email</th>
+                                <th>User Password</th>
+                                <th>First Name</th>
+                                <th>Last Name</th>
+                                <th>Birth Date</th>
+                            </tr>
+                        </thead>
+                        <?php
+                            include_once 'retrieve_user_info.php';
+                        ?>
+                    </table>
+                </div>
+            </div>
+            <div class="col-md-5">
+                <div class="table-responsive">
+                    <table class="table table-striped table-dark">
+                        <thead>
+                            <tr>
+                                <th>Device ID</th>
+                                <th>Owner's Email</th>
+                            </tr>
+                        </thead>
+                        <?php
+                            include_once 'retrieve_device_data.php';
+                        ?>
+                    </table>
+                </div>
+            </div>
+            
+        </div>
+        
+        
     </div>
     
 </head>
