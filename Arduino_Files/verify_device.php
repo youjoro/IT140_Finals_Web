@@ -13,7 +13,7 @@
     }
 
 
-    $send_link ="http://localhost//IT140_Finals_Web/Arduino_Files/py_data_test.py?data=".$verify;
+    $send_link ="http://localhost//IT140_Finals_Web/Arduino_Files/Ardu_to_Py/Py_To_php.py?data=".$verify;
     echo $send_link;
 
     die();

@@ -67,8 +67,7 @@ def send_data(data_get):
     data["date"] = datetime.timestamp(dt)
     data["id"] = data_received[3]
     r = requests.get('http://localhost/IT140_Finals_Web/restAPI/log_data.php?', params=data)
-    print(r.url)
-    return
+
 
 
 #retrieve verification from php to database
