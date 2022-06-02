@@ -31,7 +31,7 @@ def find_ardu():
 
 #retrieving of data from php
 def php_retrieve():
-    id = {'id':1234}
+    id = {'id':1512}
     r = requests.get('http://localhost//IT140_Finals_Web/Arduino_Files/verify_device.php?',params=id)
     status = r.text.split('=')
     x=status[1]
@@ -72,7 +72,6 @@ def send_data(data_get):
 
 #retrieve verification from php to database
 verify = php_retrieve()
-
 
 
 #starts to find available com ports and

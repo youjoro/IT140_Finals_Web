@@ -6,11 +6,12 @@
     $verify = 0;
     $db_conn = new DBobject;
     
-    if ($db_conn->device_exists($device_id)==TRUE){
+    if ($db_conn->verify_device($device_id)==TRUE){
         $verify=1;
     }else{
         $verify=0;
     }
+
 
 
     $send_link ="http://localhost//IT140_Finals_Web/Arduino_Files/Ardu_to_Py/Py_To_php.py?data=".$verify;

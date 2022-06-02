@@ -9,7 +9,7 @@ error_reporting(E_ALL ^ E_WARNING);
 		private $mysqli;
 
 		public function __construct() {
-			$this->host = 'localhost:3307';
+			$this->host = 'localhost';
 			$this->user = 'root';
 			$this->pass = '';
 			$this->db = 'fumo_db';
@@ -133,6 +133,20 @@ error_reporting(E_ALL ^ E_WARNING);
 				$json[] = $row;
 			}
 			echo json_encode($json);
+		}
+
+		function verify_device($id_find){
+			$query = "SELECT * FROM `available_devices` WHERE `owner_email`NOT LIKE 'NULL' AND `device_id`LIKE '$id_find';";
+			$sql=mysqli_query($this->mysqli, $query);
+
+
+			if ($sql->num_rows == 0){
+				echo $id_find." is Not Available";
+				return FALSE;
+			}
+
+			return TRUE;
+
 		}
 
 		function show_user_table(){
