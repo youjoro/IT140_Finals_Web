@@ -113,6 +113,19 @@ error_reporting(E_ALL ^ E_WARNING);
 				echo "</table>";
 				} else { echo "0 results"; }
 		}
+
+		function show_device_table(){
+			$query = "SELECT `device_id`,`owner_email` FROM `available_devices`;";
+			$sql = mysqli_query($this->mysqli, $query);
+
+			if ($sql->num_rows > 0) {
+				// output data of each row
+				while($row = $sql->fetch_assoc()) {
+				echo "<tr><td>" . $row["device_id"]. "</td><td>" . $row["owner_email"] . "</td></tr>";
+				}
+				echo "</table>";
+				} else { echo "0 results"; }
+		}
 	}
 	
 ?>
