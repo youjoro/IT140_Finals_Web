@@ -9,6 +9,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Net.Http;
+using Xamarin.Essentials;
 
 namespace Plant_Monitoring_System
 {
@@ -41,6 +42,8 @@ namespace Plant_Monitoring_System
             {
                 return;
             }
+
+            Preferences.Set("USER_EMAIL", email.Text);
 
             Intent intent = new Intent(this, typeof(MainActivity));
             StartActivity(intent);

@@ -9,7 +9,7 @@ error_reporting(E_ALL ^ E_WARNING);
 		private $mysqli;
 
 		public function __construct() {
-			$this->host = 'localhost';
+			$this->host = 'localhost:3307';
 			$this->user = 'root';
 			$this->pass = '';
 			$this->db = 'fumo_db';
@@ -98,6 +98,41 @@ error_reporting(E_ALL ^ E_WARNING);
 		function insert_device_data($device_id, $temp, $humidity, $moisture, $date) {
 			$query = "INSERT INTO `device_data` VALUES ('$device_id', '$temp', '$humidity', '$moisture', '$date')";
 			mysqli_query($this->mysqli, $query);
+		}
+
+		function get_device_data($email, $id=NULL){
+			$query = "SELECT `device_data`.`device_id`, `Temperature`, `Humidity`, `Moisture`, `reading_time`
+					FROM `device_data`
+					JOIN `available_devices` on `device_data`.`device_id` = `available_devices`.`device_id`
+					JOIN `user_info` on `user_info`.`User_email` = `available_devices`.`owner_email`
+					WHERE `user_info`.`User_email` = '$email'";
+			
+			if ($id) {
+				$query .= " AND `device_data`.`device_id`='$id'";
+			}
+
+			$query .= " AND cast(from_unixtime(`reading_time`) as Date) = cast(now() as Date)";
+
+			$query .= " ORDER BY `reading_time` ASC";
+			
+			$result = mysqli_query($this->mysqli, $query);
+
+			$json = array();
+			while($row = mysqli_fetch_assoc($result)) {
+				$json[] = $row;
+			}
+			return json_encode($json);
+		}
+
+		function get_all_devices($email) {
+			$query = "SELECT `device_id` FROM `available_devices` WHERE `owner_email` = '$email';";
+			$result = mysqli_query($this->mysqli, $query);
+
+			$json = array();
+			while($row = mysqli_fetch_assoc($result)) {
+				$json[] = $row;
+			}
+			echo json_encode($json);
 		}
 
 		function show_user_table(){
