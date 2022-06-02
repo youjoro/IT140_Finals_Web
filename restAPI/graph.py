@@ -1,8 +1,10 @@
 import matplotlib.pyplot as plt
 import matplotlib.dates as md
+from matplotlib.ticker import AutoMinorLocator
 import sys
 import json
 from datetime import datetime
+import numpy as np
 
 plt.style.use('bmh')
 
@@ -16,9 +18,9 @@ moisture_y = []
 time_x = []
 
 for data in parsed_json:
-    temperature_y.append(data['Temperature'])
-    humidity_y.append(data['Humidity'])
-    moisture_y.append(data['Moisture'])
+    temperature_y.append(float(data['Temperature']))
+    humidity_y.append(float(data['Humidity']))
+    moisture_y.append(float(data['Moisture']))
 
     date = datetime.fromtimestamp(int(data['reading_time']))
     time_x.append(date)
@@ -32,6 +34,8 @@ plt.legend()
 
 ax.xaxis.set_major_locator(md.HourLocator(interval=1))
 ax.xaxis.set_major_formatter(md.DateFormatter('%H:%M'))
+
+ax.yaxis.set_minor_locator(AutoMinorLocator(5.0))
 
 ax.set_title("Plant Readings", fontsize=20)
 plt.xticks(fontsize=12)
