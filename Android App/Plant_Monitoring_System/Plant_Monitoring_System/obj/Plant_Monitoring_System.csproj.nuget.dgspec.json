@@ -40,6 +40,18 @@
       "frameworks": {
         "monoandroid11.0": {
           "dependencies": {
+            "IronPython": {
+              "target": "Package",
+              "version": "[3.4.0-beta1, )"
+            },
+            "Newtonsoft.Json": {
+              "target": "Package",
+              "version": "[13.0.1, )"
+            },
+            "Xamarin.Android.Support.v7.CardView": {
+              "target": "Package",
+              "version": "[28.0.0.3, )"
+            },
             "Xamarin.AndroidX.AppCompat": {
               "target": "Package",
               "version": "[1.2.0.5, )"

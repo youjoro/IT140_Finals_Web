@@ -9,7 +9,7 @@ error_reporting(E_ALL ^ E_WARNING);
 		private $mysqli;
 
 		public function __construct() {
-			$this->host = 'localhost';
+			$this->host = 'localhost:3307';
 			$this->user = 'root';
 			$this->pass = '';
 			$this->db = 'fumo_db';
@@ -110,6 +110,10 @@ error_reporting(E_ALL ^ E_WARNING);
 			if ($id) {
 				$query .= " AND `device_data`.`device_id`='$id'";
 			}
+
+			$query .= " AND cast(from_unixtime(`reading_time`) as Date) = cast(now() as Date)";
+
+			$query .= " ORDER BY `reading_time` ASC";
 			
 			$result = mysqli_query($this->mysqli, $query);
 
@@ -117,7 +121,7 @@ error_reporting(E_ALL ^ E_WARNING);
 			while($row = mysqli_fetch_assoc($result)) {
 				$json[] = $row;
 			}
-			echo json_encode($json);
+			return json_encode($json);
 		}
 
 		function get_all_devices($email) {

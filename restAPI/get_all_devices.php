@@ -6,4 +6,6 @@
     $email = $_GET['email'];
 
     $db_conn->get_all_devices($email);
+
+    die();
 ?>

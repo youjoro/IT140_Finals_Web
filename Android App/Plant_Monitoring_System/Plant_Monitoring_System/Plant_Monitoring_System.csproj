@@ -162,8 +162,18 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="obj\Debug\110\TempPE\" />
+    <Folder Include="scripts\" />
   </ItemGroup>
   <ItemGroup>
+    <PackageReference Include="IronPython">
+      <Version>3.4.0-beta1</Version>
+    </PackageReference>
+    <PackageReference Include="Newtonsoft.Json">
+      <Version>13.0.1</Version>
+    </PackageReference>
+    <PackageReference Include="Xamarin.Android.Support.v7.CardView">
+      <Version>28.0.0.3</Version>
+    </PackageReference>
     <PackageReference Include="Xamarin.AndroidX.AppCompat" Version="1.2.0.5" />
     <PackageReference Include="Xamarin.Google.Android.Material" Version="1.0.0.1" />
     <PackageReference Include="Xamarin.Essentials" Version="1.6.1" />
@@ -1119,6 +1129,38 @@
     <Content Include="obj\Debug\110\lp\74\jl\res\values-zu\values-zu.xml" />
     <Content Include="obj\Debug\110\lp\74\jl\res\values\values.xml" />
     <Content Include="obj\Debug\110\lp\74\jl\res\xml\image_share_filepaths.xml" />
+    <AndroidResource Include="Resources\drawable\sortdown.png" />
+    <Content Include="obj\Debug\110\res\drawable\graph\graph.py" />
+    <Content Include="obj\Debug\110\res\drawable\marin_ramen.jpg" />
+    <Content Include="obj\Debug\110\res\drawable\rounded_rect.xml" />
+    <Content Include="obj\Debug\110\res\drawable\shikimori.jpg" />
+    <Content Include="obj\Debug\110\res\drawable\sortdown.png" />
+    <Content Include="obj\Debug\110\res\drawable\yor_bride.jpg" />
+    <Content Include="obj\Debug\110\res\drawable\yor_mama.png" />
+    <Content Include="obj\Debug\110\res\layout\login.xml" />
+    <Content Include="obj\Debug\110\res\layout\plantdata.xml" />
+    <Content Include="obj\Debug\110\res\layout\register.xml" />
+    <Content Include="obj\Debug\110\res\mipmap-anydpi-v26\ic_launcher.xml" />
+    <Content Include="obj\Debug\110\res\mipmap-anydpi-v26\ic_launcher_round.xml" />
+    <Content Include="obj\Debug\110\res\mipmap-hdpi\ic_launcher.png" />
+    <Content Include="obj\Debug\110\res\mipmap-hdpi\ic_launcher_foreground.png" />
+    <Content Include="obj\Debug\110\res\mipmap-hdpi\ic_launcher_round.png" />
+    <Content Include="obj\Debug\110\res\mipmap-mdpi\ic_launcher.png" />
+    <Content Include="obj\Debug\110\res\mipmap-mdpi\ic_launcher_foreground.png" />
+    <Content Include="obj\Debug\110\res\mipmap-mdpi\ic_launcher_round.png" />
+    <Content Include="obj\Debug\110\res\mipmap-xhdpi\ic_launcher.png" />
+    <Content Include="obj\Debug\110\res\mipmap-xhdpi\ic_launcher_foreground.png" />
+    <Content Include="obj\Debug\110\res\mipmap-xhdpi\ic_launcher_round.png" />
+    <Content Include="obj\Debug\110\res\mipmap-xxhdpi\ic_launcher.png" />
+    <Content Include="obj\Debug\110\res\mipmap-xxhdpi\ic_launcher_foreground.png" />
+    <Content Include="obj\Debug\110\res\mipmap-xxhdpi\ic_launcher_round.png" />
+    <Content Include="obj\Debug\110\res\mipmap-xxxhdpi\ic_launcher.png" />
+    <Content Include="obj\Debug\110\res\mipmap-xxxhdpi\ic_launcher_foreground.png" />
+    <Content Include="obj\Debug\110\res\mipmap-xxxhdpi\ic_launcher_round.png" />
+    <Content Include="obj\Debug\110\res\values\colors.xml" />
+    <Content Include="obj\Debug\110\res\values\ic_launcher_background.xml" />
+    <Content Include="obj\Debug\110\res\values\strings.xml" />
+    <Content Include="obj\Debug\110\res\values\styles.xml" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
