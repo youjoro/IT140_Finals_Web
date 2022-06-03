@@ -7,7 +7,6 @@ using Android.Views;
 using Android.Widget;
 using AndroidX.AppCompat.App;
 using AndroidX.Core.Content;
-using IronPython.Hosting;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
