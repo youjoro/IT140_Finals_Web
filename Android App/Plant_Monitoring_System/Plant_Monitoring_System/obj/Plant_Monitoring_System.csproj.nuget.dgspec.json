@@ -40,10 +40,6 @@
       "frameworks": {
         "monoandroid11.0": {
           "dependencies": {
-            "IronPython": {
-              "target": "Package",
-              "version": "[3.4.0-beta1, )"
-            },
             "Newtonsoft.Json": {
               "target": "Package",
               "version": "[13.0.1, )"

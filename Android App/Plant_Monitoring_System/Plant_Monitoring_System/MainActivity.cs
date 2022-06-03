@@ -33,6 +33,8 @@ namespace Plant_Monitoring_System
         Bitmap imageBitmap;
         BackgroundWorker graph_worker;
 
+        Toast toaster;
+
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
@@ -51,6 +53,8 @@ namespace Plant_Monitoring_System
 
             graph_worker.DoWork += Graph_worker_DoWork; ;
             graph_worker.RunWorkerCompleted += Graph_worker_RunWorkerCompleted;
+
+            toaster = Toast.MakeText(this, "", ToastLength.Long);
 
             init_devices();
 
@@ -73,16 +77,19 @@ namespace Plant_Monitoring_System
 
         private void PopupMenu_MenuItemClick(object sender, PopupMenu.MenuItemClickEventArgs e)
         {
-            Console.WriteLine("menu item click");
+            toaster.Cancel();
+            toaster.SetText("Graph Loading");
+            toaster.Show();
+
             var chosen_device = e.Item.TitleFormatted.ToString();
             device_option.Text = chosen_device;
 
-            if (graph_worker.IsBusy != true)
-            {
-                graph_worker.RunWorkerAsync();
+            if (graph_worker.IsBusy)
+            {          
+                return;
             }
-
-            Console.WriteLine("Should end first");
+            
+            graph_worker.RunWorkerAsync();
         }
 
         private void Graph_worker_DoWork(object sender, DoWorkEventArgs e)
@@ -97,6 +104,7 @@ namespace Plant_Monitoring_System
         private void Graph_worker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
             graph_img.SetImageBitmap(imageBitmap);
+            graph_worker.RunWorkerAsync();
         }
 
         
@@ -119,7 +127,15 @@ namespace Plant_Monitoring_System
             var response = client.GetAsync(api_uri).Result;
             var json_data = response.Content.ReadAsStringAsync().Result;
 
-            //var data = JsonConvert.DeserializeObject<Device_Data[]>(json_data);
+            var data = JsonConvert.DeserializeObject<Device_Data[]>(json_data);
+
+            if (data.Length == 0)
+            {
+                toaster.Cancel();
+                toaster.SetText("Data Unavailable");
+                toaster.Show();
+                return;
+            }
         }
 
         private void init_devices()
@@ -158,7 +174,6 @@ namespace Plant_Monitoring_System
                 if (imageBytes != null && imageBytes.Length > 0)
                 {
                     imageBitmap = BitmapFactory.DecodeByteArray(imageBytes, 0, imageBytes.Length);
-                    Console.WriteLine("IMAGE GET!");
                 }
             }
 
