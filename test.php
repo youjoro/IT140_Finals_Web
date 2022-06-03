@@ -1,28 +1,10 @@
 <?php
-    $test_arr = array();
+    $PATH = '/xampp/htdocs/IT140_Finals_Web/';
 
-    $test_arr['name'] = array();
+    $test = $argv[1];
 
-    array_push($test_arr['name'], [
-        'Device_id' => 111,
-        'Temperature' => 222,
-        'Moisture' => 333,
-        'Humidity' => 444,
-        'Date' => 555,
-    ]);
+    $txt = $test;
+    $myfile = file_put_contents($PATH."static/static.log", $txt.PHP_EOL , FILE_APPEND | LOCK_EX);
 
-    array_push($test_arr['name'], [
-        'Device_id' => 111,
-        'Temperature' => 222,
-        'Moisture' => 333,
-        'Humidity' => 444,
-        'Date' => 555,
-    ]);
-
-    foreach ($test_arr as $arr){
-        $arr_test = array();
-        foreach($arr as $data){
-            array_push($arr_test, $data['Temperature']);
-        }
-    }
+    die();
 ?>

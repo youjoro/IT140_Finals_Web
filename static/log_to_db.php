@@ -3,7 +3,7 @@
     include $PATH.'static/db_conn.php';
 
     $db_conn = new DBobject;
-    $unix_timestamp = $_GET['date'];
+    $unix_timestamp = $argv[1];
 
     $date = date("Y-m-d", $unix_timestamp);
     $filepath = $PATH."arduino_logs/arduino_".$date.".log";
@@ -18,7 +18,7 @@
     $current_timestamp = $unix_timestamp + 0;
     $delta_time = $current_timestamp - $previous_timestamp;
 
-    if ($delta_time <= 3600) { 
+    if ($delta_time <= 5) { 
         return;
     }
 
