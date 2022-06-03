@@ -28,6 +28,8 @@
     foreach (new SplFileObject($filepath) as $line) {
         $data = json_decode($line, true);
 
+        if ($data['Device_id'] == 0){ continue;}
+
         if (!in_array($data_array[$data['Device_id']], $data_array)) {
             $data_array[$data['Device_id']] = array();
             array_push($data_array[$data['Device_id']], $data);
