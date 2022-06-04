@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script>
+        function showUser(str) {
+          if (str == "") {
+            document.getElementById("txtHint").innerHTML = "";
+            return;
+          } else {
+            var xmlhttp = new XMLHttpRequest();
+            xmlhttp.onreadystatechange = function() {
+              if (this.readyState == 4 && this.status == 200) {
+                document.getElementById("txtHint").innerHTML = this.responseText;
+              }
+            };
+            xmlhttp.open("GET","restAPI/check_user.php?q="+str,true);
+            xmlhttp.send();
+          }
+        }
+    </script>
+
+
+<head>
+    <title>
+        Client View Test
+    </title>
+</head>
+  
+<body style="text-align:center;">
+         
+    <form method="POST" action="send_user_data.php" >
+      <div id="txtHint"></div>
+        Email:<input type="text" name = "user_email" onkeyup="showUser(this.value)" required>
+        <br>
+        Password:<input type="text" name = "user_password" required>
+        <br><br>
+        Device ID:<input type="text" name = "device_id">
+        <br>
+        <br>
+        <input type="submit" id="send" >
+    </form>
+
+    
+</head>
+  
+</html>
